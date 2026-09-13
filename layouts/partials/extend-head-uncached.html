@@ -1,0 +1,50 @@
+<style>
+  :root {
+    --kai-article-font-size: 1.08rem;
+  }
+
+  .article-content,
+  .article-content p,
+  .article-content li,
+  .article-content blockquote,
+  .article-content table,
+  .article-content td,
+  .article-content th {
+    font-size: var(--kai-article-font-size);
+    line-height: 1.9;
+  }
+
+  .article-content pre,
+  .article-content code {
+    font-size: .9em;
+  }
+
+  .kai-font-controls {
+    position: fixed !important;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 10001 !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: .35rem;
+    padding: .35rem;
+    border: 1px solid rgb(var(--color-neutral-200));
+    border-radius: 999px;
+    background: rgb(var(--color-neutral-50) / .96);
+    box-shadow: 0 8px 24px rgb(0 0 0 / .12);
+    pointer-events: auto !important;
+  }
+
+  .kai-font-controls button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+
+  @media (max-width: 640px) {
+    .kai-font-controls {
+      right: .75rem;
+      bottom: .75rem;
+    }
+  }
+</style>
+
