@@ -1,0 +1,60 @@
+{{ if .IsPage }}
+  <style>
+    :root { --kai-article-font-size: 1.08rem; }
+    .article-content {
+      font-size: var(--kai-article-font-size);
+      line-height: 1.9;
+    }
+    .kai-font-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin: 0 0 1.5rem;
+      padding: .3rem;
+      border: 1px solid rgb(var(--color-neutral-200));
+      border-radius: 999px;
+      background: rgb(var(--color-neutral-50) / .82);
+    }
+    .kai-font-controls__label {
+      padding: 0 .4rem;
+      color: rgb(var(--color-neutral-500));
+      font-size: .78rem;
+      white-space: nowrap;
+    }
+    .kai-font-controls button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2rem;
+      height: 2rem;
+      padding: 0 .55rem;
+      border: 0;
+      border-radius: 999px;
+      color: rgb(var(--color-neutral-700));
+      background: transparent;
+      font-size: .9rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .kai-font-controls button:hover,
+    .kai-font-controls button:focus-visible,
+    .kai-font-controls button[data-font-size-active="true"] {
+      color: rgb(var(--color-primary-800));
+      background: rgb(var(--color-primary-100));
+      outline: none;
+    }
+    @media (max-width: 640px) {
+      .kai-font-controls { margin-bottom: 1.2rem; }
+      .kai-font-controls__label { display: none; }
+    }
+  </style>
+  <div class="kai-font-controls print:hidden" data-kai-font-controls aria-label="正文文字大小">
+    <span class="kai-font-controls__label">字号</span>
+    <button type="button" data-font-size="small" aria-label="减小正文文字" title="减小正文文字">A−</button>
+    <button type="button" data-font-size="default" aria-label="恢复默认文字大小" title="恢复默认文字大小">A</button>
+    <button type="button" data-font-size="large" aria-label="放大正文文字" title="放大正文文字">A+</button>
+  </div>
+  {{ $fontSizeJS := resources.Get "js/font-size.js" | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $fontSizeJS.RelPermalink }}" integrity="{{ $fontSizeJS.Data.Integrity }}"></script>
+{{ end }}
+
