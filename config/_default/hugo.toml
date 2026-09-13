@@ -1,5 +1,5 @@
-theme = "blowfish"
-baseURL = "https://kai-blog.pages.dev/"
+﻿theme = "blowfish"
+baseURL = "https://kai-s-blog.pages.dev/"
 defaultContentLanguage = "zh"
 enableRobotsTXT = true
 summaryLength = 0
@@ -50,4 +50,5 @@ enableEmoji = true
   [[related.indices]]
     name = "date"
     weight = 10
+
 
