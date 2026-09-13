@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 48" role="img" aria-labelledby="title">
+  <title id="title">KAI logo</title>
+  <rect x="2" y="4" width="40" height="40" rx="10" fill="#2f8f83"/>
+  <path d="M13 32V16h5v6l6-6h6l-7 7 8 9h-6l-7-8v8h-5z" fill="#fff7ed"/>
+  <text x="54" y="31" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#263238">KAI Blog</text>
+</svg>
+

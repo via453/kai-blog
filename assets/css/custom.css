@@ -1,0 +1,35 @@
+:root {
+  --kai-accent: #2f8f83;
+  --kai-ink: #263238;
+  --kai-warm: #f7efe3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  letter-spacing: 0;
+}
+
+.prose a,
+.article-content a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.prose blockquote {
+  border-left-color: var(--kai-accent);
+  background: color-mix(in srgb, var(--kai-warm) 38%, transparent);
+  border-radius: 0 8px 8px 0;
+}
+
+.profile img {
+  box-shadow: 0 18px 48px rgba(47, 143, 131, 0.18);
+}
+
+header,
+footer {
+  backdrop-filter: saturate(160%) blur(10px);
+}
+
