@@ -32,4 +32,30 @@ header,
 footer {
   backdrop-filter: saturate(160%) blur(10px);
 }
+.kai-a11y-overlay {
+  background: transparent;
+}
 
+.kai-a11y-drawer {
+  width: min(22rem, calc(100vw - 3rem));
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  transform: translateX(100%);
+  animation: kai-a11y-slide-in 0.24s ease-out forwards;
+}
+
+@keyframes kai-a11y-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .kai-a11y-drawer {
+    width: min(19rem, calc(100vw - 2rem));
+  }
+}

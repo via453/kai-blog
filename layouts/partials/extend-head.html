@@ -1,0 +1,40 @@
+<style>
+  [id$="a11y-panel"] {
+    transform: translateX(0);
+    animation: kai-a11y-slide-in .16s ease-out;
+  }
+
+  [id$="a11y-panel"].hidden {
+    display: none;
+  }
+
+  [id$="a11y-overlay"] {
+    background: transparent;
+  }
+
+  .kai-font-controls {
+    display: none !important;
+  }
+
+  @keyframes kai-a11y-slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    [id$="a11y-panel"] {
+      left: auto !important;
+      right: .75rem !important;
+      top: 4rem !important;
+      width: min(18rem, calc(100vw - 1.5rem)) !important;
+      max-height: 70vh !important;
+    }
+  }
+</style>
+

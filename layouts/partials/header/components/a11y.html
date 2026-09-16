@@ -1,0 +1,92 @@
+{{- $prefix := .prefix | default "" -}}
+<div class="flex items-center">
+  <button
+    id="{{ $prefix }}a11y-toggle"
+    aria-label="打开阅读设置"
+    aria-expanded="false"
+    type="button"
+    class="bf-icon-color-hover"
+    role="button"
+    aria-pressed="false">
+    {{ partial "icon.html" "a11y" }}
+  </button>
+
+  <div id="{{ $prefix }}a11y-overlay" class="fixed inset-0 hidden bg-transparent" style="z-index:9998;"></div>
+
+  <div
+    id="{{ $prefix }}a11y-panel"
+    role="dialog"
+    aria-labelledby="{{ $prefix }}a11y-panel-title"
+    class="fixed hidden top-16 right-4 w-72 max-h-[72vh] overflow-y-auto rounded-lg shadow-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700"
+    style="z-index:9999;">
+    <div class="p-4">
+      <div class="flex items-center justify-between mb-4">
+        <h3
+          id="{{ $prefix }}a11y-panel-title"
+          class="text-base font-semibold text-neutral-900 dark:text-neutral-100">
+          阅读设置
+        </h3>
+        <button
+          id="{{ $prefix }}a11y-close"
+          class="text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+          aria-label="关闭阅读设置">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        {{ $toggles := slice }}
+        {{ $shouldDisableBlur := or site.Params.homepage.layoutBackgroundBlur site.Params.article.layoutBackgroundBlur site.Params.list.layoutBackgroundBlur }}
+        {{ $shouldDisableBackgroundImage := or
+          (eq site.Params.homepage.layout "background")
+          (eq site.Params.article.heroStyle "background")
+          (eq site.Params.list.heroStyle "background")
+          (eq site.Params.taxonomy.heroStyle "background")
+          (eq site.Params.term.heroStyle "background")
+        }}
+        {{ if $shouldDisableBlur }}
+          {{ $toggles = $toggles | append (dict "id" (print $prefix "disable-blur") "label" "禁用模糊效果") }}
+        {{ end }}
+        {{ if $shouldDisableBackgroundImage }}
+          {{ $toggles = $toggles | append (dict "id" (print $prefix "disable-images") "label" "隐藏背景图片") }}
+        {{ end }}
+        {{- $toggles = $toggles | append
+          (dict "id" (print $prefix "underline-links") "label" "显示链接下划线")
+          (dict "id" (print $prefix "zen-mode") "label" "启用阅读模式")
+        -}}
+
+        {{- range $toggles }}
+          <div class="flex items-center justify-between gap-4">
+            <label for="{{ .id }}" class="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+              {{ .label }}
+            </label>
+            <div class="ios-toggle shrink-0">
+              <input type="checkbox" id="{{ .id }}">
+            </div>
+          </div>
+        {{- end }}
+
+        <div class="flex items-center justify-between gap-4">
+          <label
+            for="{{ $prefix }}font-size-select"
+            class="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+            字体大小
+          </label>
+          <select
+            id="{{ $prefix }}font-size-select"
+            class="w-32 border rounded-lg px-3 py-1.5 pr-8 text-neutral-900 text-sm dark:bg-neutral-700 dark:text-neutral-200 focus:ring-primary-500 focus:border-primary-500">
+            <option value="default">默认</option>
+            <option value="15px">偏小</option>
+            <option value="16px">舒适</option>
+            <option value="18px">较大</option>
+            <option value="20px">大字</option>
+            <option value="22px">特大</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
