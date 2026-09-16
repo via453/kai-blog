@@ -1,16 +1,24 @@
 <style>
-  .article-content,
-  .article-content p,
-  .article-content li,
-  .article-content blockquote,
-  .article-content table,
-  .article-content td,
-  .article-content th {
-    line-height: 1.9;
+  [id$="a11y-panel"] {
+    top: 5.5rem !important;
+    right: 1rem !important;
+    left: auto !important;
+    width: 18rem !important;
+    max-height: calc(100vh - 7rem) !important;
+    overflow-y: auto !important;
   }
 
-  .article-content pre,
-  .article-content code {
-    font-size: .9em;
+  [id$="a11y-overlay"] {
+    background: transparent !important;
+  }
+
+  @media (max-width: 640px) {
+    [id$="a11y-panel"] {
+      top: 4.5rem !important;
+      right: .75rem !important;
+      width: min(18rem, calc(100vw - 1.5rem)) !important;
+      max-height: calc(100vh - 5.5rem) !important;
+    }
   }
 </style>
+
