@@ -13,6 +13,16 @@
   body #desktop-a11y-overlay {
     background: transparent !important;
     z-index: 10000 !important;
+    pointer-events: none !important;
+  }
+
+  body #desktop-a11y-panel,
+  body #desktop-a11y-panel * {
+    pointer-events: auto !important;
+  }
+
+  body #desktop-a11y-panel {
+    isolation: isolate;
   }
 
   body #desktop-a11y-panel .p-4 {
