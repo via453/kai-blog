@@ -1,65 +1,3 @@
-<style>
-  body #desktop-a11y-panel {
-    position: absolute !important;
-    top: 2.5rem !important;
-    right: 0 !important;
-    left: auto !important;
-    width: 16.5rem !important;
-    max-height: min(72vh, 32rem) !important;
-    overflow-y: auto !important;
-    z-index: 10020 !important;
-  }
-
-  body #desktop-a11y-overlay {
-    background: transparent !important;
-    z-index: 10000 !important;
-    pointer-events: none !important;
-  }
-
-  body #desktop-a11y-panel,
-  body #desktop-a11y-panel * {
-    pointer-events: auto !important;
-  }
-
-  body #desktop-a11y-panel {
-    isolation: isolate;
-  }
-
-  body #desktop-a11y-panel .p-4 {
-    padding: .9rem !important;
-  }
-
-  body #desktop-a11y-panel .space-y-4 {
-    display: grid !important;
-    gap: .65rem !important;
-  }
-
-  body #desktop-a11y-panel .space-y-4 > div {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto !important;
-    align-items: center !important;
-    gap: .75rem !important;
-  }
-
-  body #desktop-a11y-panel label {
-    min-width: 0 !important;
-    white-space: nowrap !important;
-  }
-
-  body #desktop-a11y-panel select {
-    width: 5.75rem !important;
-    min-width: 5.75rem !important;
-    height: 2rem !important;
-    padding-top: .25rem !important;
-    padding-bottom: .25rem !important;
-    font-size: .875rem !important;
-  }
-
-  body #desktop-a11y-panel .ios-toggle {
-    justify-self: end !important;
-  }
-</style>
-
 <nav aria-label="{{ i18n "nav.main_menu" }}" class="flex items-center gap-x-5 h-12">
   {{ if .Site.Menus.main }}
     {{ range .Site.Menus.main }}
@@ -78,7 +16,7 @@
         id="appearance-switcher"
         aria-label="{{ i18n "footer.dark_appearance" }}"
         type="button"
-        class="text-sm bf-icon-color-hover"
+        class="kai-icon-button text-sm bf-icon-color-hover"
         title="{{ i18n "footer.dark_appearance" }}">
         <div class="flex items-center justify-center dark:hidden">
           {{ partial "icon.html" "moon" }}
@@ -94,7 +32,7 @@
     <button
       id="search-button"
       aria-label="{{ i18n "search.open_button_title" }}"
-      class="flex items-center gap-2 rounded-lg border bf-border-color bf-border-color-hover bg-neutral-100/50 px-2 py-1 text-sm text-neutral-500 transition-colors hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral-400 dark:hover:text-primary-400"
+      class="kai-search-button flex items-center gap-2 rounded-lg border bf-border-color bf-border-color-hover bg-neutral-100/50 px-2 py-1 text-sm text-neutral-500 transition-colors hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral-400 dark:hover:text-primary-400"
       title="{{ i18n "search.open_button_title" }}">
       {{ partial "icon.html" "search" }}
       <kbd

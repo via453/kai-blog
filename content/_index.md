@@ -1,6 +1,6 @@
 ---
-title: "KAI 的个人blog"
-description: "记录KAI的经验笔记，项目复盘和一些碎碎念~"
+title: "KAI 的个人博客"
+description: "记录 KAI 的经验笔记、项目复盘和日常思考。"
 ---
 
 这里是 KAI 的个人内容空间。

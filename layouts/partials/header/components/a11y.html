@@ -1,24 +1,25 @@
 {{- $prefix := .prefix | default "" -}}
-<div class="flex items-center">
+<div class="kai-a11y flex items-center">
   <button
     id="{{ $prefix }}a11y-toggle"
     aria-label="打开阅读设置"
     aria-expanded="false"
     type="button"
-    class="bf-icon-color-hover"
-    role="button"
-    aria-pressed="false">
+    class="kai-icon-button bf-icon-color-hover"
+    aria-haspopup="dialog"
+    aria-controls="{{ $prefix }}a11y-panel">
     {{ partial "icon.html" "a11y" }}
   </button>
 
-  <div id="{{ $prefix }}a11y-overlay" class="fixed inset-0 hidden bg-transparent" style="z-index:9998;"></div>
+  <div id="{{ $prefix }}a11y-overlay" class="kai-a11y-overlay fixed inset-0 hidden" aria-hidden="true"></div>
 
   <div
     id="{{ $prefix }}a11y-panel"
     role="dialog"
+    aria-modal="true"
     aria-labelledby="{{ $prefix }}a11y-panel-title"
-    class="fixed hidden top-16 right-4 w-72 max-h-[72vh] overflow-y-auto rounded-lg shadow-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700"
-    style="z-index:9999;">
+    tabindex="-1"
+    class="kai-a11y-panel hidden rounded-lg shadow-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700">
     <div class="p-4">
       <div class="flex items-center justify-between mb-4">
         <h3
@@ -28,7 +29,8 @@
         </h3>
         <button
           id="{{ $prefix }}a11y-close"
-          class="text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+          type="button"
+          class="kai-icon-button text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
           aria-label="关闭阅读设置">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />

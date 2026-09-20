@@ -1,61 +1,42 @@
 :root {
   --kai-accent: #2f8f83;
-  --kai-ink: #263238;
-  --kai-warm: #f7efe3;
+  --kai-bg-dark: #181c1b;
+  --kai-surface-dark: #242a28;
+  --kai-text-dark: #f2f4f1;
+  --kai-body-dark: #d5dad5;
+  --kai-muted-dark: #a9b0aa;
+  --kai-faint-dark: #8f9891;
+  --kai-border-dark: #46504b;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  letter-spacing: 0;
-}
-
-.prose a,
-.article-content a {
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.18em;
-}
-
-.prose blockquote {
-  border-left-color: var(--kai-accent);
-  background: color-mix(in srgb, var(--kai-warm) 38%, transparent);
-  border-radius: 0 8px 8px 0;
-}
-
-.profile img {
-  box-shadow: 0 18px 48px rgba(47, 143, 131, 0.18);
-}
-
-header,
-footer {
-  backdrop-filter: saturate(160%) blur(10px);
-}
-.kai-a11y-overlay {
-  background: transparent;
-}
-
-.kai-a11y-drawer {
-  width: min(22rem, calc(100vw - 3rem));
-  max-height: calc(100vh - 2rem);
-  overflow-y: auto;
-  transform: translateX(100%);
-  animation: kai-a11y-slide-in 0.24s ease-out forwards;
-}
-
-@keyframes kai-a11y-slide-in {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-@media (max-width: 640px) {
-  .kai-a11y-drawer {
-    width: min(19rem, calc(100vw - 2rem));
-  }
-}
+html { scroll-behavior: smooth; }
+body { letter-spacing: 0; }
+.prose a, .article-content a { text-decoration-thickness: .08em; text-underline-offset: .18em; }
+.prose blockquote { border-left-color: var(--kai-accent); background: color-mix(in srgb, var(--kai-accent) 8%, transparent); border-radius: 0 6px 6px 0; }
+.profile img { width: clamp(7rem, 14vw, 11rem); height: clamp(7rem, 14vw, 11rem); box-shadow: 0 10px 28px rgba(25, 55, 50, .14); }
+.profile h1 { font-weight: 700; }
+.profile h2 { font-size: clamp(1.125rem, 2vw, 1.25rem); }
+.profile .prose { max-width: 40rem; }
+main { width: min(100% - 2.5rem, 70rem); }
+main > section { width: min(100%, 45rem); margin-inline: auto; }
+main > section:first-child { width: 100%; }
+.article-content { font-size: 1.0625rem; line-height: 1.82; }
+.article-content p { margin-block: 0 0.9em; }
+header, footer { -webkit-backdrop-filter: saturate(145%) blur(10px); backdrop-filter: saturate(145%) blur(10px); }
+.kai-icon-button, .kai-search-button { min-width: 2.5rem; min-height: 2.5rem; display: inline-flex; align-items: center; justify-content: center; }
+.kai-a11y { position: relative; }
+.kai-a11y-overlay { z-index: 10000; background: transparent; }
+.kai-a11y-panel { position: absolute; z-index: 10010; top: calc(100% + .5rem); right: 0; width: 20rem; max-height: min(32rem, calc(100dvh - 5rem)); overflow-y: auto; overscroll-behavior: contain; transform-origin: top right; animation: kai-panel-in .16s ease-out; }
+.kai-a11y-panel .space-y-4 { display: grid; gap: .75rem; }
+.kai-a11y-panel .space-y-4 > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
+.kai-a11y-panel select { width: 7rem; }
+.kai-font-controls { display: none; }
+@keyframes kai-panel-in { from { opacity: 0; transform: translateY(-.4rem); } to { opacity: 1; transform: translateY(0); } }
+.dark body { background: var(--kai-bg-dark); color: var(--kai-body-dark); }
+.dark .prose, .dark .article-content { color: var(--kai-body-dark); }
+.dark h1, .dark h2, .dark h3, .dark .prose strong { color: var(--kai-text-dark); }
+.dark .text-neutral-400, .dark .text-neutral-500 { color: var(--kai-muted-dark); }
+.dark .kai-a11y-panel { background: var(--kai-surface-dark); border-color: var(--kai-border-dark); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { header, footer { background-color: rgb(250 248 244 / .97); } .dark header, .dark footer { background-color: rgb(24 28 27 / .97); } }
+@media (max-width: 767px) { body.kai-dialog-open { overflow: hidden; } main { width: min(100% - 2.5rem, 45rem); } .kai-icon-button, .kai-search-button { min-width: 2.75rem; min-height: 2.75rem; } .kai-search-button kbd { display: none; } .kai-a11y-panel { position: fixed; inset: auto .75rem .75rem; width: auto; max-height: min(78dvh, 34rem); border-radius: 8px; transform-origin: bottom center; animation-name: kai-drawer-in; } .kai-a11y-overlay { background: rgb(0 0 0 / .28); } .profile header { margin-bottom: .5rem; } .profile h1 { font-size: 2rem; } .profile .prose { font-size: 1rem; } }
+@keyframes kai-drawer-in { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

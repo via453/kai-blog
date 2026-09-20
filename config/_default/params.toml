@@ -8,7 +8,7 @@ enableA11y = true
 enableStructuredBreadcrumbs = true
 disableImageOptimization = false
 disableImageOptimizationMD = false
-disableTextInHeader = false
+disableTextInHeader = true
 fingerprintAlgorithm = "sha512"
 
 [header]

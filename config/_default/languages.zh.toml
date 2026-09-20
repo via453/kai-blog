@@ -2,14 +2,14 @@ disabled = false
 locale = "zh-CN"
 label = "简体中文"
 weight = 1
-title = "KAI 的个人blog"
+title = "KAI 的个人博客"
 
 [params]
   displayName = "中文"
   isoCode = "zh-cn"
   rtl = false
   dateFormat = "2006年1月2日"
-  description = "记录KAI的经验笔记，项目复盘和一些碎碎念~"
+  description = "记录 KAI 的经验笔记、项目复盘和日常思考。"
   logo = "img/kai-logo.svg"
 
 [params.author]
